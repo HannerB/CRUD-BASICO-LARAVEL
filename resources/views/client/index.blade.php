@@ -19,12 +19,25 @@
             </thead>
 
             <tbody>
+                @forelse ($clients as $detail)
+
                 <tr>
-                    <td>FelinoHost</td>
-                    <td>0.0</td>
+                    <td>{{ $detail->name }}</td>
+                    <td>{{ $detail->due }}</td>
                     <td>Editar - Eliminar</td>
                 </tr>
+                    
+                @empty
+                <tr>
+                    <td colspan="3">No Hay Registros</td>
+                </tr>  
+                @endforelse
+                
             </tbody>
         </table>
+
+        @if ($clients->count())
+            {{ $clients->links() }}
+        @endif
     </div>
 @endsection
