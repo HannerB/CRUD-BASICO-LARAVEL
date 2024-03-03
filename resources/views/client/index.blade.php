@@ -24,7 +24,10 @@
                 <tr>
                     <td>{{ $detail->name }}</td>
                     <td>{{ $detail->due }}</td>
-                    <td>Editar - Eliminar</td>
+                    <td>
+                        <a href="{{ route('client.edit', $detail) }}" class="btn btn-warning">Editar</a>
+                        <a href=""></a>
+                    </td>
                 </tr>
                     
                 @empty
@@ -32,7 +35,7 @@
                     <td colspan="3">No Hay Registros</td>
                 </tr>  
                 @endforelse
-                
+
             </tbody>
         </table>
 
