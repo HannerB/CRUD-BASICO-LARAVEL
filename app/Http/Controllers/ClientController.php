@@ -20,7 +20,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('client.form');
     }
 
     /**
@@ -28,7 +28,14 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:15',
+            'due' => 'required|gte:50',
+        ]);
+
+        $client = Client::create($request->only('name','due','comments'));
+
+        return redirect()->route('client.index');
     }
 
     /**
